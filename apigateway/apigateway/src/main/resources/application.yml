@@ -1,0 +1,23 @@
+server:
+  port: 8999
+  
+eureka:
+  client:
+    service-url:
+      defaultZone : http://localhost:8761/eureka/
+
+spring:
+  application:
+    name: api-gateway
+    
+  cloud:
+    gateway:
+      routes:
+      - id: login-functionality
+        uri: lb://login-functionality
+        predicates:
+           - Path=/auth/**
+           
+           
+
+ 
